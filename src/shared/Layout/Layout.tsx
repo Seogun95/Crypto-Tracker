@@ -1,8 +1,11 @@
 import React, { Suspense } from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { Outlet } from 'react-router-dom';
 
 export default function Layout() {
+  const theme = useTheme();
+  console.log(theme);
+
   return (
     <>
       <Suspense fallback={null}>

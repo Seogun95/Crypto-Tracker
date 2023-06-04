@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components';
+import { DefaultTheme, css } from 'styled-components';
 
 const blue = {
   brandColor1: '#F9FBFF',
@@ -10,7 +10,54 @@ const blue = {
   brandColor7: '#005EDA',
 };
 
+const FlexCol = css`
+  display: flex;
+  flex-direction: column;
+`;
+
+const FlexRow = css`
+  display: flex;
+  flex-direction: row;
+`;
+
+const FlexCenter = css`
+  justify-content: center;
+  align-items: center;
+`;
+
+const wh100 = css`
+  width: 100%;
+  height: 100%;
+`;
+
+const AbsoluteTL = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
+const CursorActive = css`
+  pointer-events: auto;
+  cursor: pointer;
+`;
+
+const DarkBlur = css`
+  background: ${props => props.theme.bgColor}aa;
+  backdrop-filter: blur(0.5125rem);
+`;
+
+const theme = {
+  wh100,
+  FlexCol,
+  FlexRow,
+  FlexCenter,
+  AbsoluteTL,
+  CursorActive,
+  DarkBlur,
+};
+
 export const Theme: DefaultTheme = {
+  ...theme,
   blue,
   pointColor: '#30B198',
   subColor: '#FFC857',
@@ -25,6 +72,7 @@ export const Theme: DefaultTheme = {
 };
 
 export const DarkTheme: DefaultTheme = {
+  ...theme,
   blue,
   pointColor: '#30B198',
   subColor: '#FFC857',

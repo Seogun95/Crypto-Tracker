@@ -4,6 +4,13 @@ import 'styled-components';
 // and extend them!
 declare module 'styled-components' {
   export interface DefaultTheme {
+    wh100;
+    FlexCol;
+    FlexRow;
+    FlexCenter;
+    AbsoluteTL;
+    CursorActive;
+    DarkBlur;
     blue: {
       brandColor1: string;
       brandColor2: string;
