@@ -24,6 +24,7 @@ declare module 'styled-components' {
     subColor: string;
     accentColor: string;
     transparentBackground: string;
+    bgColorDeep: string;
     bgColor: string;
     bgColor2: string;
     color: string;
