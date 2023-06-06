@@ -25,7 +25,9 @@ declare module 'styled-components' {
     accentColor: string;
     transparentBackground: string;
     bgColor: string;
+    bgColor2: string;
     color: string;
+    color2: string;
     transparentColor: string;
     transitionOption: string;
     pointColorLight: string;

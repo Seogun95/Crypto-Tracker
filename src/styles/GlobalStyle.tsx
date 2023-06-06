@@ -30,6 +30,7 @@ code {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 h1 { font-size: 2.5rem }

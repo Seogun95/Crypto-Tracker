@@ -6,7 +6,7 @@ import { GlobalStyle } from 'styles';
 export default function App() {
   return (
     <>
-      <ThemeProvider theme={Theme}>
+      <ThemeProvider theme={DarkTheme}>
         <GlobalStyle />
         <Outlet />
       </ThemeProvider>
