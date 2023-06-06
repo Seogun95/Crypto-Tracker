@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
-
-interface CoinObject {
-  id: string;
-  name: string;
-  symbol: string;
-  rank: number;
-  is_new: boolean;
-  is_active: boolean;
-  type: string;
-}
+import { fetchCoins } from 'modules';
+import { useQuery } from 'react-query';
+import { ICoin } from 'interface';
 
 export function Coins() {
-  const [coins, setCoins] = useState<CoinObject[]>([]);
-  const [loading, setLoading] = useState(true);
+  /*const [coins, setCoins] = useState<CoinObject[]>([]);
+  const [loading, setLoading]  = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -23,7 +14,9 @@ export function Coins() {
       setCoins(res.data.slice(0, 100));
       setLoading(false);
     })();
-  }, []);
+  }, []); */
+
+  const { isLoading, data } = useQuery<ICoin[]>(['allCoins'], fetchCoins);
 
   return (
     <>
@@ -31,11 +24,11 @@ export function Coins() {
         <Header>
           <Title>코인</Title>
         </Header>
-        {loading ? (
+        {isLoading ? (
           <Loading>로딩중</Loading>
         ) : (
           <CoinsList>
-            {coins.map(coin => (
+            {data?.slice(0, 100).map(coin => (
               <Coin key={coin.id}>
                 <Link to={`/${coin.id}`} state={coin}>
                   <img
