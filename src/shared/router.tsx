@@ -3,10 +3,8 @@ import { Suspense } from 'react';
 
 import App from 'App';
 
-import Layout from './Layout/Layout';
-import NotFound from './Layout/NotFound';
-import Coin from 'pages/Coin';
-import Coins from 'pages/Coins';
+import { Chart, Coin, Coins, Price } from 'pages';
+import { Layout, NotFound } from 'shared/Layout';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +26,16 @@ const router = createBrowserRouter([
           {
             path: ':coinId',
             element: <Coin />,
+            children: [
+              {
+                path: 'chart',
+                element: <Chart />,
+              },
+              {
+                path: 'price',
+                element: <Price />,
+              },
+            ],
           },
         ],
       },

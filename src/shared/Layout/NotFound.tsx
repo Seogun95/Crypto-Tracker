@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import error from 'assets/svg/error.svg';
 import { Link } from 'react-router-dom';
 
-export default function NoContent() {
+export function NotFound() {
   useEffect(() => {
     const originalStyle = {
       overflow: document.documentElement.style.overflow,
