@@ -1,24 +1,37 @@
-import axios from 'axios';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import {
+  Outlet,
+  useLocation,
+  useParams,
+  useMatch,
+  Link,
+} from 'react-router-dom';
 import styled from 'styled-components';
-import React, { useEffect, useState } from 'react';
+
 import { LocationState, IInfoData, IPriceData } from 'interface';
-import { Link } from 'react-router-dom';
-import { useMatch } from 'react-router-dom';
+import { fetchDataTickers, fetchDataInfo, numberFormat } from 'modules';
+import { useQuery } from 'react-query';
 
 export function Coin() {
   const { coinId } = useParams<'coinId'>();
-  const [loading, setLoading] = useState(true);
   const { state } = useLocation() as LocationState;
-  const [info, setInfo] = useState<IInfoData>();
-  const [price, setPrice] = useState<IPriceData>();
   const priceMatch = useMatch('/:coinId/price');
   const chartMatch = useMatch('/:coinId/chart');
 
-  const numberFormat = (num: number): string => {
-    return new Intl.NumberFormat().format(num);
-  };
-  useEffect(() => {
+  // const [info, setInfo] = useState<IInfoData>();
+  // const [price, setPrice] = useState<IPriceData>();
+
+  const { isLoading: infoLoading, data: infoData } = useQuery<IInfoData>(
+    ['info', coinId],
+    () => fetchDataInfo(String(coinId))
+  );
+  const { isLoading: priceLoading, data: priceData } = useQuery<IPriceData>(
+    ['price', coinId],
+    () => fetchDataTickers(String(coinId))
+  );
+
+  console.log('infoData --->', infoData);
+
+  /*useEffect(() => {
     (async () => {
       try {
         const { data: infoRes } = await axios.get(
@@ -34,44 +47,54 @@ export function Coin() {
         console.error(error);
       }
     })();
-  }, [coinId]);
+  }, [coinId]); */
+
+  const isLoading = infoLoading || priceLoading;
 
   return (
     <>
       <Container>
         <Header>
-          <Title>{state?.name || '로딩중...'}</Title>
+          <Title>
+            {state?.name
+              ? state.name
+              : isLoading
+              ? '로딩중...'
+              : infoData?.name}
+          </Title>
         </Header>
-        {loading ? (
+        {isLoading ? (
           <Loading>로딩중...</Loading>
         ) : (
           <>
-            {price && info && (
+            {infoData && priceData && (
               <>
                 <CoinWrapper>
                   <OverviewContainer>
                     <OverviewItem>
                       <span>랭크</span>
-                      <span>{info?.rank}</span>
+                      <span>{infoData?.rank}</span>
                     </OverviewItem>
                     <OverviewItem>
                       <span>심볼</span>
-                      <span>{info?.symbol}</span>
+                      <span>{infoData?.symbol}</span>
                     </OverviewItem>
                     <OverviewItem>
                       <span>오픈소스</span>
-                      <span>{info?.open_source ? '사용가능' : '사용불가'}</span>
+                      <span>
+                        {infoData?.open_source ? '사용가능' : '사용불가'}
+                      </span>
                     </OverviewItem>
                   </OverviewContainer>
-                  <Description>{info?.description}</Description>
+                  <Description>{infoData?.description}</Description>
                   <OverviewContainer>
                     <OverviewItem>
                       <span>총 공급</span>
-                      <span>{numberFormat(price?.total_supply)}</span>
+                      <span>{numberFormat(priceData?.total_supply)}</span>
                     </OverviewItem>
                     <OverviewItem>
                       <span>최대 공급</span>
-                      <span>{numberFormat(price?.max_supply)}</span>
+                      <span>{numberFormat(priceData?.max_supply)}</span>
                     </OverviewItem>
                   </OverviewContainer>
                   <TapContainer>
