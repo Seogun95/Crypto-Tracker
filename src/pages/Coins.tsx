@@ -13,7 +13,7 @@ interface CoinObject {
   type: string;
 }
 
-export default function Coins() {
+export function Coins() {
   const [coins, setCoins] = useState<CoinObject[]>([]);
   const [loading, setLoading] = useState(true);
 

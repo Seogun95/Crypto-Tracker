@@ -154,7 +154,7 @@ table {
 }
 
 html {
-  font-size: .9375rem
+  font-size: 16px;
 }
 
 `;
