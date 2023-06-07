@@ -57,7 +57,7 @@ export default function Header() {
         <HeaderLogoContainer>
           {/* <div onClick={scrollToTop}>홈으로</div> */}
           <Link to="/" onClick={scrollToTop}>
-            React Coin
+            All Coin Chart
           </Link>
         </HeaderLogoContainer>
       </HeaderContainer>
