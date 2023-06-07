@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/React_MasterClass/static/js/main.d9fddffb.js",
-    "static/media/error.svg": "/React_MasterClass/static/media/error.c721cafefa7061e7d9cbc150c5da4306.svg",
-    "index.html": "/React_MasterClass/index.html",
-    "main.d9fddffb.js.map": "/React_MasterClass/static/js/main.d9fddffb.js.map"
+    "main.js": "/All_Coin_Chart/static/js/main.ab5f7bd3.js",
+    "static/media/error.svg": "/All_Coin_Chart/static/media/error.c721cafefa7061e7d9cbc150c5da4306.svg",
+    "index.html": "/All_Coin_Chart/index.html",
+    "main.ab5f7bd3.js.map": "/All_Coin_Chart/static/js/main.ab5f7bd3.js.map"
   },
   "entrypoints": [
-    "static/js/main.d9fddffb.js"
+    "static/js/main.ab5f7bd3.js"
   ]
 }
