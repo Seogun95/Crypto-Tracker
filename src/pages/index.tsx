@@ -1,5 +1,5 @@
 export * from './Coin';
 export * from './Coins';
 export * from './Home';
-export * from './Chart';
-export * from './Price';
+export * from './Chart/Chart';
+export * from './Price/Price';
