@@ -23,6 +23,7 @@ declare module 'styled-components' {
     pointColor: string;
     subColor: string;
     accentColor: string;
+    greenColor: string;
     transparentBackground: string;
     bgColorDeep: string;
     bgColor: string;
@@ -32,6 +33,11 @@ declare module 'styled-components' {
     transparentColor: string;
     transitionOption: string;
     pointColorLight: string;
-    boxShadow: string;
+    shadow: {
+      box: string;
+      box1: string;
+      drop: string;
+      drop1: string;
+    };
   }
 }

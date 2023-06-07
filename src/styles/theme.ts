@@ -63,15 +63,21 @@ export const Theme: DefaultTheme = {
   subColor: '#FFC857',
   accentColor: '#EF476F',
   pointColorLight: '#44c5ac',
+  greenColor: '#33bd65',
   transparentBackground: '#f5f6f7a6',
   bgColorDeep: 'white',
-  bgColor: '#F8FAFB',
+  bgColor: '#efefef',
   bgColor2: '#1e1e1e',
   color: '#191A23',
   color2: '#E2E2E2',
   transparentColor: 'rgba(25, 26, 35, 0.65)',
   transitionOption: 'ease-in-out 0.15s',
-  boxShadow: '1px 2px 10px rgba(0, 0, 0, 0.16)',
+  shadow: {
+    box: '0px 0.2rem 0.5rem rgba(10, 10, 10, 0.1)',
+    box1: '0rem .5625rem .75rem -0.4375rem rgba(0, 0, 0, .3);',
+    drop: 'drop-shadow(rgba(0, 0, 0, 0.1) .125rem .25rem .125rem) drop-shadow(rgba(0, 0, 0, 0.3) 0 .3125rem .425rem)',
+    drop1: 'drop-shadow(1px 1px 1px black)',
+  },
 };
 
 export const DarkTheme: DefaultTheme = {
@@ -81,6 +87,7 @@ export const DarkTheme: DefaultTheme = {
   subColor: '#FFC857',
   accentColor: '#EF476F',
   pointColorLight: '#44c5ac',
+  greenColor: '#33bd65',
   transparentBackground: '#21232E',
   bgColorDeep: 'black',
   bgColor: '#1e1e1e',
@@ -89,5 +96,10 @@ export const DarkTheme: DefaultTheme = {
   color2: '#191A23',
   transparentColor: '#f5f6f7a6',
   transitionOption: 'ease-in-out 0.15s',
-  boxShadow: '1px 2px 10px rgba(0, 0, 0, 0.16)',
+  shadow: {
+    box: '0px 0.2rem 0.5rem rgba(0, 0, 0, 0.9)',
+    box1: '0 .5625rem .75rem -.4375rem rgba(0, 0, 0, 1);',
+    drop: 'drop-shadow(rgba(0, 0, 0, 1) 0.125rem 0.15rem 0.125rem) drop-shadow(rgba(0, 0, 0, 1) .125rem 0.075rem 0.425rem)',
+    drop1: 'drop-shadow(1px 2px 1px black)',
+  },
 };

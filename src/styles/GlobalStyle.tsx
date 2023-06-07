@@ -54,7 +54,7 @@ mark {
 }
 
 /* Prevent Drag */
-* {
+img {
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
