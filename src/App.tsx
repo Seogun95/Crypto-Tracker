@@ -13,7 +13,7 @@ export default function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={true} />
-        <ThemeProvider theme={DarkTheme}>
+        <ThemeProvider theme={Theme}>
           <GlobalStyle />
           <Outlet />
         </ThemeProvider>
