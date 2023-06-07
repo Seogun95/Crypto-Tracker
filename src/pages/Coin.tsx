@@ -29,8 +29,6 @@ export function Coin() {
     () => fetchDataTickers(String(coinId))
   );
 
-  console.log('infoData --->', infoData);
-
   /*useEffect(() => {
     (async () => {
       try {
@@ -105,7 +103,7 @@ export function Coin() {
                       <Link to="price">Price</Link>
                     </Tap>
                   </TapContainer>
-                  <Outlet />
+                  <Outlet context={{ coinId }} />
                 </CoinWrapper>
               </>
             )}
