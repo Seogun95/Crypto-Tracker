@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { fetchCoins } from 'modules';
 import { useQuery } from 'react-query';
 import { ICoin } from 'interface';
+import { Helmet } from 'react-helmet';
 
 export function Coins() {
   /*const [coins, setCoins] = useState<CoinObject[]>([]);
@@ -17,10 +18,18 @@ export function Coins() {
   }, []); */
 
   const { isLoading, data } = useQuery<ICoin[]>(['allCoins'], fetchCoins);
-
   return (
     <>
       <Container>
+        <Helmet>
+          <title>코인</title>
+          <link
+            rel="icon"
+            type="image/png"
+            href={`${process.env.PUBLIC_URL}/favicon.ico`}
+            sizes="16x16"
+          />
+        </Helmet>
         <Header>
           <Title>코인</Title>
         </Header>
@@ -30,7 +39,7 @@ export function Coins() {
           <CoinsList>
             {data?.slice(0, 100).map(coin => (
               <Coin key={coin.id}>
-                <Link to={`/${coin.id}`} state={coin}>
+                <Link to={`/${coin.id}/price`} state={coin}>
                   <img
                     src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                     alt="코인 이미지"
@@ -65,8 +74,9 @@ const Title = styled.h1`
 const CoinsList = styled.ul``;
 
 const Coin = styled.li`
-  background-color: ${props => props.theme.bgColor2};
-  color: ${props => props.theme.color2};
+  background-color: ${props => props.theme.bgColorDeep};
+  box-shadow: ${props => props.theme.shadow.box};
+  color: ${props => props.theme.color};
   margin-bottom: 10px;
   border-radius: 15px;
   a {
