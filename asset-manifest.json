@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/All_Coin_Chart/static/js/main.c840c9bf.js",
+    "main.js": "/All_Coin_Chart/static/js/main.d1452b0d.js",
     "static/media/error.svg": "/All_Coin_Chart/static/media/error.c721cafefa7061e7d9cbc150c5da4306.svg",
     "index.html": "/All_Coin_Chart/index.html",
-    "main.c840c9bf.js.map": "/All_Coin_Chart/static/js/main.c840c9bf.js.map"
+    "main.d1452b0d.js.map": "/All_Coin_Chart/static/js/main.d1452b0d.js.map"
   },
   "entrypoints": [
-    "static/js/main.c840c9bf.js"
+    "static/js/main.d1452b0d.js"
   ]
 }
