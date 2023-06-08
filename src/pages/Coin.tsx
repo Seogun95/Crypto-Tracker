@@ -86,9 +86,11 @@ export function Coin() {
                       <span>${priceData?.quotes.USD.price.toFixed(2)}</span>
                     </OverviewItem>
                   </OverviewContainer>
-                  <OverviewContainer>
-                    <p>{infoData?.description}</p>
-                  </OverviewContainer>
+                  {infoData?.description && (
+                    <OverviewContainer>
+                      <p>{infoData.description}</p>
+                    </OverviewContainer>
+                  )}
                   <OverviewContainer>
                     <OverviewItem>
                       <span>총량</span>
@@ -161,6 +163,11 @@ const OverviewContainer = styled.article`
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: ${props => props.theme.shadow.box};
+  ${({ theme }) => theme.media.mobile`
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  `}
 `;
 
 const OverviewItem = styled.div`

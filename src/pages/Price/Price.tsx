@@ -32,10 +32,13 @@ export function Price() {
     { time: '한달 전', percentChange: percent_change_30d },
     { time: '1년 전', percentChange: percent_change_1y },
   ];
+  const gridItemCount = gridListData.filter(
+    ({ percentChange }) => percentChange !== 0
+  ).length;
 
   return (
     <>
-      <GridContainer gridItemCount={gridListData.length}>
+      <GridContainer gridItemCount={gridItemCount}>
         <GridList>
           <HighPrice>
             <span>
@@ -45,9 +48,14 @@ export function Price() {
             <span>${ath_price.toFixed(2)}</span>
           </HighPrice>
         </GridList>
-        {gridListData.map(({ time, percentChange }) => (
-          <GridList key={time} time={time} percentChange={percentChange} />
-        ))}
+        {gridListData.map(({ time, percentChange }) => {
+          if (percentChange === 0) {
+            return null;
+          }
+          return (
+            <GridList key={time} time={time} percentChange={percentChange} />
+          );
+        })}
       </GridContainer>
     </>
   );
@@ -55,15 +63,21 @@ export function Price() {
 
 const GridContainer = styled.article<{ gridItemCount: number }>`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 10px;
-  > div:last-child {
-    grid-column: ${props => props.gridItemCount % 2 !== 0 && '1 / span 2'};
-  }
-  > div:first-child {
-    grid-column: 1 / span 2;
-    background-color: ${props => props.theme.bgColor2};
-    color: ${props => props.theme.color2};
+  > div {
+    &:first-child {
+      grid-column: 1 / span 2;
+      background-color: ${props => props.theme.bgColor2};
+      color: ${props => props.theme.color2};
+    }
+    &:last-child {
+      grid-column: ${props => props.gridItemCount % 2 !== 0 && '1 / span 2'};
+    }
+
+    ${({ theme }) => theme.media.mobile`
+      grid-column: 1 !important;
+    `}
   }
 `;
 
@@ -81,4 +95,10 @@ const HighPrice = styled.div`
       font-size: 2rem;
     }
   }
+
+  ${({ theme }) => theme.media.mobile`
+    ${theme.FlexCol};
+    align-items: flex-start;
+    gap: .5rem;
+  `}
 `;
