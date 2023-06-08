@@ -1,7 +1,10 @@
 import React, { Suspense } from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
+
 import Header from './Header';
+import { DarkModeBtn } from 'components/DarkModeBtn';
+import { media } from 'styles';
 
 export function Layout() {
   return (
@@ -10,6 +13,7 @@ export function Layout() {
         <Wrapper>
           <Header />
           <Outlet />
+          <DarkModeBtn />
         </Wrapper>
       </Suspense>
     </>

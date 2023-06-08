@@ -71,3 +71,8 @@ export interface IPriceData {
     };
   };
 }
+
+export interface IDarkMode {
+  isDark?: boolean;
+  toggleDarkMode?: () => void;
+}
