@@ -2,14 +2,14 @@ import { fetchCoinHistory } from 'modules';
 import { useQuery } from 'react-query';
 import { useOutletContext } from 'react-router-dom';
 
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
-import { ChartOptions } from './ChartOptions';
+import { ApexChartLine } from './ApexChartLine';
 import { IChartProps, ICoinHistoryData } from './Interface';
+import { ApexChartCandlestick } from './ApexChartCandlestick';
 
 export function Chart() {
   const { coinId } = useOutletContext<IChartProps>();
-
   const { isLoading, data } = useQuery<ICoinHistoryData[]>(
     ['coinHistory', coinId],
     () => fetchCoinHistory(coinId),
@@ -19,7 +19,14 @@ export function Chart() {
   return (
     <>
       <div>
-        {isLoading ? '차트 로딩중...' : data && <ChartOptions data={data} />}
+        {isLoading
+          ? '차트 로딩중...'
+          : data && (
+              <>
+                <ApexChartLine data={data} />
+                <ApexChartCandlestick data={data} />
+              </>
+            )}
       </div>
     </>
   );
