@@ -4,11 +4,14 @@ import React from 'react';
 import ApexChart from 'react-apexcharts';
 import { ICoinHistoryData } from './Interface';
 import { formatAgo } from 'modules';
+import { isDarkAtom } from 'atom';
+import { useRecoilValue } from 'recoil';
 
 interface IChartProps {
   data: ICoinHistoryData[];
 }
 export function ApexChartCandlestick({ data }: IChartProps) {
+  const isDark = useRecoilValue(isDarkAtom);
   return (
     <>
       <ApexChart
@@ -25,7 +28,7 @@ export function ApexChartCandlestick({ data }: IChartProps) {
         ]}
         options={{
           theme: {
-            mode: 'light',
+            mode: `${isDark ? 'dark' : 'light'}`,
           },
           grid: { show: false },
           chart: {

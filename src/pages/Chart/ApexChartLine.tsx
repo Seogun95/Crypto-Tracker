@@ -5,11 +5,14 @@ import styled from 'styled-components';
 import ApexChart from 'react-apexcharts';
 import { ICoinHistoryData } from './Interface';
 import { formatAgo } from 'modules';
+import { useRecoilValue } from 'recoil';
+import { isDarkAtom } from 'atom';
 
 interface IChartProps {
   data: ICoinHistoryData[];
 }
 export function ApexChartLine({ data }: IChartProps) {
+  const isDark = useRecoilValue(isDarkAtom);
   return (
     <>
       <ApexChart
@@ -22,7 +25,7 @@ export function ApexChartLine({ data }: IChartProps) {
         ]}
         options={{
           theme: {
-            mode: 'light',
+            mode: `${isDark ? 'dark' : 'light'}`,
           },
           noData: {
             text: '차트 데이터가 없습니다.',
