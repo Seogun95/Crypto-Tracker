@@ -39,5 +39,11 @@ declare module 'styled-components' {
       drop: string;
       drop1: string;
     };
+    media: {
+      mobile: (literals: TemplateStringsArray, ...args: any[]) => CSSProp;
+      tablet: (literals: TemplateStringsArray, ...args: any[]) => CSSProp;
+      laptop: (literals: TemplateStringsArray, ...args: any[]) => CSSProp;
+      desktop: (literals: TemplateStringsArray, ...args: any[]) => CSSProp;
+    };
   }
 }

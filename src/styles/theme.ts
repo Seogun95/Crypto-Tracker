@@ -1,4 +1,5 @@
 import { DefaultTheme, css } from 'styled-components';
+import { media } from './media';
 
 const blue = {
   brandColor1: '#F9FBFF',
@@ -57,6 +58,7 @@ const theme = {
 };
 
 export const Theme: DefaultTheme = {
+  media,
   ...theme,
   blue,
   pointColor: '#30B198',
@@ -81,6 +83,7 @@ export const Theme: DefaultTheme = {
 };
 
 export const DarkTheme: DefaultTheme = {
+  media,
   ...theme,
   blue,
   pointColor: '#30B198',
@@ -89,7 +92,7 @@ export const DarkTheme: DefaultTheme = {
   pointColorLight: '#44c5ac',
   greenColor: '#33bd65',
   transparentBackground: '#21232E',
-  bgColorDeep: 'black',
+  bgColorDeep: '#2d2d2d',
   bgColor: '#1e1e1e',
   bgColor2: '#F8FAFB',
   color: '#E2E2E2',
