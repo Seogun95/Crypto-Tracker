@@ -63,8 +63,13 @@ export function Price() {
 
 const GridContainer = styled.article<{ gridItemCount: number }>`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
+
+  ${({ theme }) => theme.media.mobile`
+      grid-template-columns: 1fr;
+  `}
+
   > div {
     &:first-child {
       grid-column: 1 / span 2;
@@ -77,6 +82,7 @@ const GridContainer = styled.article<{ gridItemCount: number }>`
 
     ${({ theme }) => theme.media.mobile`
       grid-column: 1 !important;
+      grid-template-columns: 1fr;
     `}
   }
 `;
