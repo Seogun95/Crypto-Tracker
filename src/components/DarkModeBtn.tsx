@@ -1,12 +1,21 @@
-import React from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 import { TbMoonFilled } from 'react-icons/tb';
 import { RiSunFill } from 'react-icons/ri';
-import { useOutletContext } from 'react-router-dom';
-import { IDarkMode } from 'interface';
+
+import { useRecoilState } from 'recoil';
+import { isDarkAtom } from 'atom';
 
 export function DarkModeBtn() {
-  const { isDark, toggleDarkMode } = useOutletContext<IDarkMode>();
+  const [isDark, setIsDark] = useRecoilState(isDarkAtom);
+
+  const toggleDarkMode = useCallback(() => {
+    setIsDark(prev => {
+      localStorage.setItem('darkMode', `${!prev}`);
+      return !prev;
+    });
+  }, [setIsDark]);
+
   return (
     <>
       <Toggle onClick={toggleDarkMode}>

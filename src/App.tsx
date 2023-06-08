@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Outlet } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -7,23 +7,26 @@ import { GlobalStyle, media } from 'styles';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { isDarkAtom } from 'atom';
 
 const queryClient = new QueryClient();
 
 export default function App() {
-  const [isDark, setIsDark] = useState(true);
-  const toggleDarkMode = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setIsDark(prev => !prev);
-  };
-  const theme = isDark ? { ...DarkTheme, ...media } : { ...Theme, ...media };
+  const darkMode = useRecoilValue(isDarkAtom);
+  const theme = darkMode ? { ...DarkTheme, ...media } : { ...Theme, ...media };
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode ? 'true' : 'false');
+  }, [darkMode]);
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={true} />
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <Outlet context={{ isDark, toggleDarkMode }} />
+          <Outlet />
         </ThemeProvider>
       </QueryClientProvider>
     </>
